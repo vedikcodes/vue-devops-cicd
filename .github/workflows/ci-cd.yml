@@ -23,5 +23,11 @@ jobs:
       - name: Build Vue app
         run: npm run build
 
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
       - name: Build Docker image
-        run: docker build -t vue-devops .
+        run: docker build -t ${{ secrets.maverickcodes}}/vue-devops .
+
+      - name: Push Docker image
+        run: docker push ${{ secrets.?..@4EnZp@NPRtW }}/vue-devops
